@@ -2,6 +2,9 @@ from datetime import datetime, timedelta
 import re
 import requests
 from bs4 import BeautifulSoup
+from urllib.parse import urljoin
+
+base_url = "https://www.youtube.com/"
 
 
 def _get_offset_or_views(meta):
@@ -44,7 +47,11 @@ def extract_one_page(soup, summ):
     for div in divs:
         info = dict()
         link = div.select('h3 a')[0]
-        info['url'] = link['href']
+        url = link['href']
+        if 'channel' in url:
+            continue
+        info['asset_key'] = url.split('?')[-1]
+        info['url'] = urljoin(base_url, url)
         info['title'] = link['title']
         div_meta_info = div.find('ul', class_='yt-lockup-meta-info')
         if div_meta_info:
