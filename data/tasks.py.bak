@@ -1,0 +1,11 @@
+#coding=utf-8
+import subprocess
+
+from celery import shared_task
+
+
+@shared_task
+def download_file(url):
+    cmd = ['youtube-dl', '--proxy', 'socks5://127.0.0.1:1086', url]
+    pipe = subprocess.Popen(cmd)
+    out, err = pipe.communicate()
