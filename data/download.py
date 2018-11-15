@@ -3,16 +3,14 @@ import subprocess
 from datetime import datetime
 from data.models import ExtraAsset
 
-from celery import shared_task
-from timer_tasks.celery_timer_config import timer_task
-from extract.celery import async_app
+from celery import task, shared_task
 
 import logging
 
 logger = logging.getLogger()
 
 
-@timer_task.task
+@task
 def check_assets():
     eas = ExtraAsset.objects.filter(in_lib=False)
     for ea in eas:
@@ -21,7 +19,7 @@ def check_assets():
 
 @shared_task
 def download_asset(asset_key):
-    ea = ExtraAsset.ojbects.get(asset_key)
+    ea = ExtraAsset.objects.get(asset_key=asset_key)
     cmd = ['youtube-dl', '--proxy', 'socks5://127.0.0.1:1086', ea.media_url]
     try:
         out_bytes = subprocess.check_output(cmd)

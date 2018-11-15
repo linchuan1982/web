@@ -2,15 +2,17 @@ import json
 from analysis.youtube import get_links
 from analysis.models import SearchUrl
 from data.models import ExtraAsset, FileType
-from celery import shared_task
-from timer_tasks.celery_timer_config import timer_task
-from extract.celery import async_app
+from celery import shared_task, task
+from timer_tasks.celery_config import timer_task
+from datetime import datetime
 
 
-@timer_task.task
+@task
 def fetch_all():
     urls = SearchUrl.objects.all()
     for url in urls:
+        url.fetch_at = datetime.now()
+        url.save()
         fetch_one_link.delay(url.request_url, url.source)
 
 @shared_task
