@@ -99,9 +99,12 @@ aivideo/aivideo/top_views.py.bak
 aivideo/msc/
 
 # Django migrations
-/aivideo/**/migrations
+/**/migrations
 
 aivideo/aivideo/settings_www_local.py
+
+# celery beat
+celerybeat-schedule.*
 
 
 # emacs projectile settings
@@ -111,7 +114,7 @@ aivideo/aivideo/settings_www_local.py
 sftp-config.json
 
 # vim tags
-aivideo/tags
+tags
 
 # vim swp
 *.swp

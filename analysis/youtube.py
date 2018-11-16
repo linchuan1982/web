@@ -7,7 +7,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-proxies = {'http': 'socks5://127.0.0.1:1086', 'https': 'socks5://127.0.0.1:1086'}
+proxies = {'http': 'socks5h://127.0.0.1:1086', 'https': 'socks5h://127.0.0.1:1086'}
 
 ytlink = 'https://www.youtube.com/channel/UCUvoulvwzCnUVk7yoduI_Gw/videos'
 

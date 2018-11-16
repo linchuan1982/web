@@ -1,7 +1,7 @@
 import json
 from analysis.youtube import get_links
 from analysis.models import SearchUrl
-from data.models import ExtraAsset, FileType
+from data.models import ExtraAsset, FileType, DownloadStatus
 from celery import shared_task, task
 from timer_tasks.celery_config import timer_task
 from datetime import datetime
@@ -32,7 +32,7 @@ def fetch_one_link(url, source):
             asset_key=item['asset_key'],
             source=source,
             asset_type=FileType.video.value,
-            in_lib=False,
+            status=DownloadStatus.initial.value,
         )
         ex.link_url.add(su)
         ex.save()

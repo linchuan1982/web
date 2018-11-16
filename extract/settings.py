@@ -25,7 +25,7 @@ SECRET_KEY = '2mo2_41psqz$i9fe$3t#yfc0c6(vhl-tr!2=#^097r%s(8_c#('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 CELERY_BROKER_URL = 'amqp://localhost'
 
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'extract.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'extractor',
+        'NAME': 'python',
         'USER': 'hunch',
         'PASSWORD': 'asdf1234',
         'HOST': 'localhost',
