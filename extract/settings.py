@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'analysis',
     'data',
-    'timer_tasks',
+    'timer_task',
+    'async_task',
 ]
 
 MIDDLEWARE = [

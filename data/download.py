@@ -2,6 +2,7 @@
 import subprocess
 from datetime import datetime
 from data.models import ExtraAsset, DownloadStatus
+from timer_task.celery_config import timer_task
 
 from celery import task, shared_task
 
@@ -10,7 +11,7 @@ import logging
 logger = logging.getLogger()
 
 
-@task
+@timer_task.task
 def check_assets():
     eas = ExtraAsset.objects.filter(status__in=[DownloadStatus.faield.value, DownloadStatus.initial.value])
     for ea in eas:

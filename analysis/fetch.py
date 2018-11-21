@@ -3,11 +3,12 @@ from analysis.youtube import get_links
 from analysis.models import SearchUrl
 from data.models import ExtraAsset, FileType, DownloadStatus
 from celery import shared_task, task
-from timer_tasks.celery_config import timer_task
+from async_task.celery_config import async_task
+from timer_task.celery_config import timer_task
 from datetime import datetime
 
 
-@task
+@async_task.task
 def fetch_all():
     urls = SearchUrl.objects.all()
     for url in urls:
