@@ -2,12 +2,13 @@ from bs4 import BeautifulSoup
 import requests
 # from urlparse import urljoin # python 2
 from urllib.parse import urljoin
+
+from django.conf import settings
 from .youtube_one_page import extract_one_page
 import logging
 
 logger = logging.getLogger(__name__)
 
-proxies = {'http': 'socks5h://127.0.0.1:1086', 'https': 'socks5h://127.0.0.1:1086'}
 
 ytlink = 'https://www.youtube.com/channel/UCUvoulvwzCnUVk7yoduI_Gw/videos'
 
@@ -19,7 +20,7 @@ def get_links(url=ytlink):
 
     s = requests.Session()
 
-    r = s.get(url, proxies=proxies).content
+    r = s.get(url, proxies=settings.PROXY).content
     soup = BeautifulSoup(r, 'html.parser')
 
     # yield first visible links
@@ -33,7 +34,7 @@ def get_links(url=ytlink):
 
     while True:
         print(ajax)
-        r = s.get(urljoin('https://www.youtube.com/', ajax), proxies=proxies)
+        r = s.get(urljoin('https://www.youtube.com/', ajax), proxies=settings.PROXY)
 
         # next html is stored in the json.values()
         # soup = BeautifulSoup(r.content, "html.parser")

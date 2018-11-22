@@ -83,7 +83,7 @@ DATABASES = {
         'NAME': 'python',
         'USER': 'hunch',
         'PASSWORD': 'asdf1234',
-        'HOST': 'localhost',
+        'HOST': '40.73.33.137',
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8mb4'},
     }
@@ -161,3 +161,7 @@ USE_L10N = True
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+PROXY = {'http': 'http://40.73.33.137:1081', 'https': 'http://40.73.33.137:1081'}
+
+SS_PROXY = 'socks5://127.0.0.1:1086'
