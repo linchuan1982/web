@@ -16,7 +16,7 @@ def fetch_all():
         url.save()
         fetch_one_link.delay(url.request_url, url.source)
 
-@shared_task
+@async_task.task
 def fetch_one_link(url, source):
     summ = get_links(url)
     asset_keys = [_['asset_key'] for _ in summ]

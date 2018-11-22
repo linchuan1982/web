@@ -13,12 +13,12 @@ timezone = 'Asia/Shanghai'
 beat_schedule = {
     'fetch': {
         'task': 'analysis.fetch.fetch_all',  #执行的函数
-        'schedule': crontab(minute='*/120'),   # every minute 每分钟执行
+        'schedule': crontab(minute='*/30'),   # every minute 每分钟执行
         'args': ()  # # 任务函数参数
     },
     'check': {
         'task': 'data.download.check_assets',  #执行的函数
-        'schedule': crontab(minute='*/30'),   # every minute 每分钟执行
+        'schedule': crontab(minute='*/120'),   # every minute 每分钟执行
         'args': ()  # # 任务函数参数
     },
 }

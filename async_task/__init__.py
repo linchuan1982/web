@@ -1,3 +1,3 @@
-from .celery_config import async_task
+from .celery_config import async_task as celery_task
 
-__all__ = ['async_task']
+__all__ = ['celery_task']
