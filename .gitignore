@@ -99,7 +99,7 @@ aivideo/aivideo/top_views.py.bak
 aivideo/msc/
 
 # Django migrations
-/**/migrations
+/**/migrations/
 
 aivideo/aivideo/settings_www_local.py
 
