@@ -12,10 +12,10 @@ logger = logging.getLogger(__name__)
 
 ytlink = 'https://www.youtube.com/channel/UCUvoulvwzCnUVk7yoduI_Gw/videos'
 
+
 def get_links(url=ytlink):
     # cretate all css selectors
     ajax_css = "button[data-uix-load-more-href]"
-    base = "https://www.youtube.com/"
     summ = list()
 
     s = requests.Session()
