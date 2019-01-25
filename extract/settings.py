@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'extract.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'python',
-        'USER': 'hunch',
+        'NAME': 'extractor',
+        'USER': 'linc',
         'PASSWORD': 'asdf1234',
-        'HOST': '40.73.33.137',
+        'HOST': 'test2',
         'PORT': '3306',
         'OPTIONS': {'charset': 'utf8mb4'},
     }
